@@ -56,6 +56,9 @@ int main(void){
         return EXIT_FAILURE;
     }
     printf("Сокет привязан к адресу %s:%d\n", SERVER_IP, SERVER_PORT);
+    // Вывод списка fd
+    printf("--- Открытые FD до close() ---\n");
+    system("ls -la /proc/$(pgrep -n lab1_middle)/fd/");
     // Закрываем сокет
     if(close(sockfd) < 0){
         perror("close");
